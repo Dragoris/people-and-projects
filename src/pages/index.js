@@ -1,21 +1,40 @@
 import React from "react"
-import { Link } from "gatsby"
+import Helmet from "react-helmet"
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUser, faBorderAll } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
+import Container from 'react-bootstrap/Container'
+import Landing from '../components/Landing'
+import Header from '../components/Header'
+
+
+library.add(faUser, faBorderAll)
+
+
+
+const IndexPage = () => (  
+<React.Fragment>
+  <Helmet>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </Helmet>
+  <Header />
+  <Container fluid={true} 
+    style={{padding: 0, marginTop: '-50px'}}>
+    <iframe
+      style={{height: '105vh', width: '100vw'}} 
+      src='https://www.google.com/maps/d/u/0/embed?mid=1g8eP43S6HU4dh-EzzF5kMRB8nYX6eVTo&z=4'
+    />
+    <Landing />
+  </Container>
+  
+
+  </React.Fragment>
 )
 
 export default IndexPage

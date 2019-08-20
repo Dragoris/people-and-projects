@@ -1,42 +1,27 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from 'react'
+import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+const teal = {color: '#52BCC5', fontWeight: 700}
+const Header = () => (
+	<Navbar bg="light" variant="light">
+	    <Navbar.Brand href="#home">
+	    	<img src="//d3ju1gh2kf3yfd.cloudfront.net/img/ER_01_Logo.jpg" style={{height: '50px'}} />
+	    	CODA entitle®
+	    </Navbar.Brand>
+	    <Nav className="ml-auto">
+	    	<Nav.Link href="#" style={teal}>My Reports</Nav.Link>
+	    	<Nav.Link href="#" style={teal}>My Projects</Nav.Link>
+	    	<Nav.Link href="#">Hi, Rick</Nav.Link>
+    		<Nav.Link href="#"><FontAwesomeIcon icon="user" /></Nav.Link>
+    		<Nav.Link href="#"><FontAwesomeIcon icon="border-all" /></Nav.Link>
+
+	    </Nav>
+	</Navbar>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
