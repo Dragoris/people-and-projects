@@ -4,12 +4,14 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
 import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import { connect } from 'react-redux';
 
 import { members } from '../apis/council-members'
+import { toggleMember } from '../state/actions'
 
 
-const Controls = () => (
-	<Container fluid='true'>
+const Controls = (props) => {
+	return <Container fluid='true'>
 		<Form className="p-3 m-3 border">
 			<Row>
 				<Col sm={2}><h4>Dataset</h4></Col>
@@ -19,10 +21,10 @@ const Controls = () => (
 				<Col sm={2}>
 					<BootstrapSwitchButton
 					    checked={false}
-					    onlabel='People'
-					    offlabel='Permits'
+					    onlabel='Permits'
+					    offlabel='People'
 					    width={100}
-					    onstyle="outline-primary"
+					    onstyle="outline-secondary"
 					    offstyle="outline-primary"
 					    
 					/>
@@ -32,6 +34,7 @@ const Controls = () => (
 					members.map((member, i) => {
 						return (
 						      <Form.Check
+						      	defaultChecked={true}
 						        custom
 						        inline
 						        label={member.CName +', ' +member.DISTRICT}
@@ -39,6 +42,7 @@ const Controls = () => (
 						        type='checkbox'
 						        id={`custom-inline-checkbox-${member.DistrictNum}`}
 						        style={{width: '13%', fontSize: '.8em'}}
+						        onClick={() => props.toggle(member.DistrictNum)}
 						      />
 						)
 					})
@@ -47,6 +51,16 @@ const Controls = () => (
 			</Row>
 		</Form>
 	</Container>
-)
+}
 
-export default Controls
+const mapDispatchToProps = (dispatch, member) => {
+	return {
+		toggle: (member) => {
+			dispatch(toggleMember(member))
+		}
+	}
+};
+
+
+
+export default connect(null, mapDispatchToProps)(Controls)

@@ -3,7 +3,9 @@ import Helmet from "react-helmet"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import { connect } from 'react-redux';
 
+import MemberImages from '../components/MemberImages'
 import Header from '../components/Header'
 import Controls from '../components/Controls'
 import Image from '../components/Image'
@@ -30,7 +32,7 @@ const PeoplePage = () => (
 					</Col>
 					<Col md={7} className="border">
 						<h4>Vote History</h4>
-						people
+						<MemberImages />
 					</Col>
 				</Row>
 			</Container>
@@ -38,4 +40,9 @@ const PeoplePage = () => (
 	</React.Fragment>
 )
 
-export default PeoplePage
+const mapStateToProps = (state) => {
+	return {members: state}
+}
+
+export default connect(mapStateToProps)(PeoplePage)
+
