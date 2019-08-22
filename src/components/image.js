@@ -34,7 +34,7 @@ const Image = (props) => (
           alt={props.alt}
           sizes={imageSizes}
           style={props.styleprop}
-          click={props.onClick}
+          onClick={props.onClick}
         />
       );
     }}

@@ -1,7 +1,8 @@
 import { members} from '../apis/council-members'
 
-const memberState = [];
 
+
+const memberState = [];
 members.forEach((member) => {
 	memberState.push({
 		member: member.DistrictNum,
@@ -16,5 +17,6 @@ members.forEach((member) => {
 	})
 })
 
-console.log(memberState)
-export const initialState = {memberState}
+export const initialState = {
+	memberState,
+}

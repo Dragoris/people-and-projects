@@ -9,6 +9,7 @@ import MemberImages from '../components/MemberImages'
 import Header from '../components/Header'
 import Controls from '../components/Controls'
 import Image from '../components/Image'
+import DoughnutChart from '../components/DoughnutChart'
 
 
 const PeoplePage = () => (  
@@ -33,6 +34,17 @@ const PeoplePage = () => (
 					<Col md={7} className="border">
 						<h4>Vote History</h4>
 						<MemberImages />
+					</Col>
+				</Row>
+				<Row className="p-3 m-3">
+					<Col md={5} className="border">
+						<h4>Donors & Conflicts</h4>
+						
+						<DoughnutChart />
+					</Col>
+					<Col md={7} className="border">
+						<h4>Profile</h4>
+						
 					</Col>
 				</Row>
 			</Container>

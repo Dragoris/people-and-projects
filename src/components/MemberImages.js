@@ -1,7 +1,5 @@
 import React from 'react'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+
 
 import Image from './image'
 import { connect } from 'react-redux';
@@ -10,13 +8,6 @@ import { connect } from 'react-redux';
 const MemberImages = (props) => {
 	const members = props.members.memberReducer;
 
-	const flexStyle = {
-		display: 'flex',
-		flexWrap: 'wrap',
-	}
-	// const containerStyle = {
-
-	// }
 	return (
 		<div className="d-flex flex-wrap">
 			{
