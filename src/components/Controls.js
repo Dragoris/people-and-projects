@@ -46,7 +46,7 @@ const Controls = (props) => {
 							        type='checkbox'
 							        id={`custom-inline-checkbox-${member.DistrictNum}`}
 							        style={{width: '13%', fontSize: '.8em'}}
-							        onClick={() => props.toggle(member.DistrictNum)}
+							        onClick={() => props.toggle(member.LName)}
 							    />
 							)
 						})

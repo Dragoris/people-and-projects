@@ -2,29 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2';
 
+import { getMembers } from '../state/memberReducer'
+import { colors } from '../apis/colors'
 
-const colors = [
-	'rgb(60,180,75)',
-	'rgb(0,0,128)',
-	'rgb(230,25,75)',
-	'rgb(245,130,48)',
-	'rgb(100,151,177)',
-	'rgb(170,255,195)',
-	'rgb(230,190,255)',
-	'rgb(128,128,128)',
-	'rgb(128,0,0)',
-	'rgb(255,225,25)',
-	'rgb(0,130,200)',
-]
+
+const DoughnutChart = (props) => (
+	<Doughnut
+		data={props.data}
+	/>
+)
 
 
 
-const DoughnutChart = (props, i) => {
+
+const mapStateToProps = (state) => {
 	const lables = [];
 	const data = [];
 	const backgroundColor = [];
 
-	props.members.forEach((member, i) => {
+	getMembers(state).forEach((member, i) => {
 		if (member.selected) {
 			lables.push(member.name)
 			data.push(member.conflicts)
@@ -40,19 +36,7 @@ const DoughnutChart = (props, i) => {
 	    }],
 	};
 
-	return (
-		<div>
-			<Doughnut
-				data={dataProp}
-				key={i}/>
-		</div>
-	)
-}
-
-
-
-const mapStateToProps = (state) => {
-	return {members: state.memberReducer}
+	return {data: dataProp}
 }
 
 export default connect(mapStateToProps)(DoughnutChart)

@@ -10,6 +10,7 @@ import Header from '../components/Header'
 import Controls from '../components/Controls'
 import Image from '../components/Image'
 import DoughnutChart from '../components/DoughnutChart'
+import DonorBarChart from '../components/BarChart'
 
 
 const PeoplePage = () => (  
@@ -37,16 +38,20 @@ const PeoplePage = () => (
 					</Col>
 				</Row>
 				<Row className="p-3 m-3">
-					<Col md={5} className="border">
-						<h4>Donors & Conflicts</h4>
-						
+					<Col md={4} className="border">
+						<h4>Conflicts</h4>
 						<DoughnutChart />
 					</Col>
-					<Col md={7} className="border">
+					<Col md={4} className="border">
+
+					</Col>
+					<Col md={4} className="border">
 						<h4>Profile</h4>
 						
 					</Col>
 				</Row>
+										<h4>Donors</h4>
+						<DonorBarChart />
 			</Container>
 		</Container>
 	</React.Fragment>
@@ -56,5 +61,5 @@ const mapStateToProps = (state) => {
 	return {members: state}
 }
 
-export default connect(mapStateToProps)(PeoplePage)
+export default PeoplePage
 

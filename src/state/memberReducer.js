@@ -19,3 +19,7 @@ export default (state = members, action) => {
 			return state;
 	}
 }
+
+export const getMembers = (state) => {
+	return state.memberReducer
+}

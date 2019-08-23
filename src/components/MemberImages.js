@@ -3,16 +3,15 @@ import React from 'react'
 
 import Image from './image'
 import { connect } from 'react-redux';
+import { getMembers } from '../state/memberReducer'
 
 
 const MemberImages = (props) => {
-	const members = props.members.memberReducer;
-
 	return (
 		<div className="d-flex flex-wrap">
 			{
 
-			members.map(member => {
+			props.members.map(member => {
 				if (member.selected) {
 					return (
 						<div key={member.member} style={{width: '150px'}} className="d-flex flex-column m-2 ">
@@ -48,6 +47,8 @@ const MemberImages = (props) => {
 }
 
 const mapStateToProps = (state) => {
-	return {members: state}
+	console.log(getMembers(state))
+
+	return {members: getMembers(state)}
 }
 export default connect(mapStateToProps)(MemberImages)
