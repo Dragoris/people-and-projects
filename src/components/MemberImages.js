@@ -47,8 +47,6 @@ const MemberImages = (props) => {
 }
 
 const mapStateToProps = (state) => {
-	console.log(getMembers(state))
-
 	return {members: getMembers(state)}
 }
 export default connect(mapStateToProps)(MemberImages)

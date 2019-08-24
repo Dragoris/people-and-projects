@@ -11,9 +11,10 @@ import Controls from '../components/Controls'
 import Image from '../components/Image'
 import DoughnutChart from '../components/DoughnutChart'
 import DonorBarChart from '../components/BarChart'
+import TableComponent from '../components/TableComponent'
 
 
-const PeoplePage = () => (  
+const PeoplePage = () => (
 	<React.Fragment>
 	  <Helmet>
 	    <link
@@ -46,12 +47,13 @@ const PeoplePage = () => (
 
 					</Col>
 					<Col md={4} className="border">
-						<h4>Profile</h4>
-						
+
 					</Col>
 				</Row>
-										<h4>Donors</h4>
-						<DonorBarChart />
+				<h4>Profile</h4>
+				<Row><Col xs={12}><TableComponent contacts/></Col></Row>
+				<Row><Col xs={12}><TableComponent donors/></Col></Row>
+				<Row><Col xs={12}><DonorBarChart /></Col></Row>
 			</Container>
 		</Container>
 	</React.Fragment>

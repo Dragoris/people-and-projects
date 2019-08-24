@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Form from 'react-bootstrap/Form'
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
 import { connect } from 'react-redux';
 
 import { members } from '../apis/council-members'
@@ -19,21 +18,11 @@ const Controls = (props) => {
 		>
 			<Form>
 				<Row>
-					<Col sm={2}><h4>Dataset</h4></Col>
-					<Col sm={10}><h4>Council Members</h4></Col>
+					<Col sm={12}><h4>Council Members</h4></Col>
 				</Row>
 				<Row key={`custom-inline-checkbox`} >
-					<Col sm={2}>
-						<BootstrapSwitchButton
-						    checked={false}
-						    onlabel='Permits'
-						    offlabel='People'
-						    width={100}
-						    onstyle="outline-secondary"
-						    offstyle="outline-primary"
-						/>
-					</Col>
-					<Col sm={10}>
+		
+					<Col sm={12}>
 						{
 						members.map((member, i) => {
 							return (

@@ -23,3 +23,6 @@ export default (state = members, action) => {
 export const getMembers = (state) => {
 	return state.memberReducer
 }
+export const getSelectedMembers = (state) => {
+	return state.memberReducer.filter(member => member.selected)
+}

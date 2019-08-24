@@ -1,15 +1,15 @@
 import React from "react"
 import Helmet from "react-helmet"
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUser, faBorderAll } from '@fortawesome/free-solid-svg-icons'
-
+import { faUser, faBorderAll, faGlobe, faEnvelope, faPhone, faNewspaper } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 import Container from 'react-bootstrap/Container'
 import Landing from '../components/Landing'
 import Header from '../components/Header'
 
 
-library.add(faUser, faBorderAll)
+library.add(faUser, faBorderAll, faGlobe, faEnvelope, faPhone, faNewspaper, faTwitter, faFacebook)
 
 
 

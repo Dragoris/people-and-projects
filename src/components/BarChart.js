@@ -47,7 +47,6 @@ const mapStateToProps = (state) => {
 	    	backgroundColor: '#165F1E',
 	    }],
 	};
-	console.log(dataProp)
 	return {data: dataProp}
 }
 

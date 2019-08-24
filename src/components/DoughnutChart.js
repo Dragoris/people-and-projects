@@ -9,6 +9,7 @@ import { colors } from '../apis/colors'
 const DoughnutChart = (props) => (
 	<Doughnut
 		data={props.data}
+		options={props.options}
 	/>
 )
 
@@ -35,8 +36,13 @@ const mapStateToProps = (state) => {
 	      backgroundColor: backgroundColor,
 	    }],
 	};
+	const options = {
+    	legend: {
+	        position: 'left',
+	    },
+	};
 
-	return {data: dataProp}
+	return {data: dataProp, options: options}
 }
 
 export default connect(mapStateToProps)(DoughnutChart)
