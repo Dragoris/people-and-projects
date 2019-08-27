@@ -6,25 +6,16 @@ import { getMembers } from '../state/memberReducer'
 import { colors } from '../apis/colors'
 
 
-const DoughnutChart = (props) => (
-	<Doughnut
-		data={props.data}
-		options={props.options}
-	/>
-)
-
-
-
-
-const mapStateToProps = (state) => {
+const DoughnutChart = (props) => {
 	const lables = [];
 	const data = [];
 	const backgroundColor = [];
 
-	getMembers(state).forEach((member, i) => {
+	props.data.forEach((member, i) => {
 		if (member.selected) {
+			const value = (props.conflicts ? member.conflicts : member.donors.total)
 			lables.push(member.name)
-			data.push(member.conflicts)
+			data.push(value)
 			backgroundColor.push(colors[i])
 		}
 	})
@@ -42,7 +33,21 @@ const mapStateToProps = (state) => {
 	    },
 	};
 
-	return {data: dataProp, options: options}
+	return (
+		<Doughnut
+			data={dataProp}
+			options={options}
+		/>
+	)
+}
+
+
+
+
+const mapStateToProps = (state) => {
+	
+
+	return {data: getMembers(state)}
 }
 
 export default connect(mapStateToProps)(DoughnutChart)

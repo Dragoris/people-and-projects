@@ -38,82 +38,101 @@ const donors = {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Jimenez: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Peralez: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Diep: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Carrasco: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Davis: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Esparza: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Arenas: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Foley: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Khamis: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	},
 	Liccardo: {
 		other: 0,
 		business: 0,
 		association: 0,
+		total: 0,
 		list: [],
 	}
 }
 
 councilDonors.forEach(donor => {
-	if (donor.ENTITY === 'COM' || donor.ENTITY === 'SCC') {
-		donors[donor.LNAME]['association'] += 1
+	const entity = donor.ENTITY
+	const name = donor.LNAME
+	if (entity === 'COM' || entity === 'SCC') {
+		donors[name]['association'] += 1
 	}
-	else if (donor.ENTITY === 'PTY' || donor.ENTITY === 'IND') {
-		donors[donor.LNAME]['other'] += 1
+	else if (entity === 'PTY' || entity === 'IND') {
+		donors[name]['other'] += 1
 	}
-	else if (donor.ENTITY === 'OTH') {
-		donors[donor.LNAME]['business'] += 1
+	else if (entity === 'OTH') {
+		donors[name]['business'] += 1
 	}
 
-	donors[donor.LNAME].list.push(donor)
+	if (donor.AMOUNT !== "") {
+		const amount = parseInt(donor.AMOUNT.replace(/[$,]/g, ''))
+		console.log(name, amount)
+		donors[name]['total'] += amount
+		donors[name].list.push(donor)
+	}
+
 })
 
 memberState.forEach(member => {

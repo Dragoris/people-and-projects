@@ -30,8 +30,8 @@ const PeoplePage = () => (
 			<Container fluid={true} className="p-0">
 				<Row className="p-3 m-3">
 					<Col md={5} className="border">
-						<h4>Region</h4>
-						<Image filename="SJDistricts.png" />
+						<h4>Conflicts</h4>
+						<DoughnutChart conflicts/>
 					</Col>
 					<Col md={7} className="border">
 						<h4>Vote History</h4>
@@ -39,22 +39,29 @@ const PeoplePage = () => (
 					</Col>
 				</Row>
 				<Row className="p-3 m-3">
-					<Col md={4} className="border">
-						<h4>Conflicts</h4>
+					<Col md={5} className="border">
+						<h4>Total Donations</h4>
 						<DoughnutChart />
 					</Col>
-					<Col md={4} className="border">
-
+					<Col md={7} className="border">
+						<h4>Council Donor by Type</h4>
+						<DonorBarChart />
 					</Col>
-					<Col md={4} className="border">
+				</Row>
+				<Row className="p-3 m-3">
+					<Col md={12} className="border">
+						<h4>Contacts</h4>
+						<TableComponent contacts/>
 
 					</Col>
 				</Row>
-								<Row><Col xs={12}><DonorBarChart /></Col></Row>
+				<Row className="p-3 m-3">
+					<Col md={12} className="border">
+						<h4>Donor List</h4>
+						<TableComponent />
+					</Col>
+				</Row>
 
-				<h4>Profile</h4>
-				<Row><Col xs={12}><TableComponent contacts/></Col></Row>
-				<Row><Col xs={12}><TableComponent contacts={false}/></Col></Row>
 			</Container>
 		</Container>
 	</React.Fragment>

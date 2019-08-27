@@ -18,6 +18,7 @@ const TableComponent = (props) => {
 			return columns.push({
         		label: title,
         		field: title,
+        		width: 150
       		})
 		})
 
@@ -96,7 +97,11 @@ const TableComponent = (props) => {
 		  striped
 		  border
 		  hover
-		  responsive
+		  responsiveLg
+		  scrollY
+		  scrollX
+		  entries={15}
+		  maxHeight="450px"
 		/>
 	)
 }
