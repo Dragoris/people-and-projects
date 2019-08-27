@@ -50,10 +50,11 @@ const PeoplePage = () => (
 
 					</Col>
 				</Row>
+								<Row><Col xs={12}><DonorBarChart /></Col></Row>
+
 				<h4>Profile</h4>
 				<Row><Col xs={12}><TableComponent contacts/></Col></Row>
-				<Row><Col xs={12}><TableComponent donors/></Col></Row>
-				<Row><Col xs={12}><DonorBarChart /></Col></Row>
+				<Row><Col xs={12}><TableComponent contacts={false}/></Col></Row>
 			</Container>
 		</Container>
 	</React.Fragment>

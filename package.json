@@ -20,6 +20,7 @@
     "gatsby-plugin-sharp": "^2.2.11",
     "gatsby-source-filesystem": "^2.1.9",
     "gatsby-transformer-sharp": "^2.2.6",
+    "mdbreact": "^4.19.1",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.11",
