@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const teal = {color: '#52BCC5', fontWeight: 700}
 const Header = () => (
 	<Navbar bg="light" variant="light">
-	    <Navbar.Brand href="#home">
+	    <Navbar.Brand href="/">
 	    	<img
 	    		src="//d3ju1gh2kf3yfd.cloudfront.net/img/ER_01_Logo.jpg"
 	    		style={{height: '50px'}}

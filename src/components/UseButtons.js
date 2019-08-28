@@ -56,7 +56,7 @@ data.forEach(use => {
 	
 	 buttons.push(
 		<OverlayTrigger trigger="click" placement="top" key={use.name}overlay={popover}>
-	    	<Button variant="secondary">{use.name}</Button>
+	    	<Button variant="dark">{use.name}</Button>
 		</OverlayTrigger>
 	)
 	

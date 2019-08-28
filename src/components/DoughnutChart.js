@@ -33,11 +33,15 @@ const DoughnutChart = (props) => {
 	    },
 	};
 
+
+
 	return (
-		<Doughnut
-			data={dataProp}
-			options={options}
-		/>
+		<div className="d-flex flex-column justify-content-center h-100" style={{minHeight: '350px'}}>
+			<Doughnut
+				data={dataProp}
+				options={options}
+			/>
+		</div>
 	)
 }
 

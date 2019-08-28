@@ -16,6 +16,8 @@ library.add(faUser, faBorderAll, faGlobe, faEnvelope, faPhone, faNewspaper, faTw
 const IndexPage = () => (  
 <React.Fragment>
   <Helmet>
+    <meta charSet="utf-8" />
+    <title>CODA entitle®</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -27,6 +29,7 @@ const IndexPage = () => (
   <Container fluid={true} 
     style={{padding: 0, marginTop: '-50px'}}>
     <iframe
+      title="Static Map"
       style={{height: '105vh', width: '100vw'}} 
       src='https://www.google.com/maps/d/u/0/embed?mid=1g8eP43S6HU4dh-EzzF5kMRB8nYX6eVTo&z=4'
     />

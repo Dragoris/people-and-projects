@@ -1,7 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import Table from 'react-bootstrap/Table'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { MDBDataTable } from 'mdbreact';
 
 
@@ -35,7 +33,7 @@ const TableComponent = (props) => {
 				return (
 					[<a 
 					className="blue-text"
-					href={"http://"+link} 
+					href={link} 
 					target="_blank" 
 					rel="noopener noreferrer">
 					<i key={key} className={icon} aria-hidden="true" /></a>]
@@ -57,7 +55,7 @@ const TableComponent = (props) => {
 					const contact = member.contact
 					Object.keys(contact).forEach(val =>{
 
-						if (needIcon.includes(val)) {
+						if (needIcon.includes(val) && contact[val] !== "") {
 							row[val] = getIcon(iconMap[val], contact[val], val)
 						}
 						else {
@@ -84,147 +82,31 @@ const TableComponent = (props) => {
 
 			})
 		}
-		// console.log(rows)
 		return rows
 	}
 
 	const data = {columns: buildColumns(), rows: buildRows()}
-	// console.log(data)
 	return (
 	
 		<MDBDataTable
 		  data={data}
 		  striped
-		  border
+		  bordered
 		  hover
 		  responsiveLg
 		  scrollY
 		  scrollX
 		  entries={15}
-		  maxHeight="450px"
+		  maxHeight="550px"
 		/>
 	)
 }
 
 const mapStateToProps = (state) => {
-	console.log(getMembers(state))
 	return {data: getMembers(state)}
 }
 
 export default connect(mapStateToProps)(TableComponent)
 
 	
-		// <FontAwesomeIcon icon="globe" />
-		// <FontAwesomeIcon style={{marginRight: '10px'}} size="2x" icon={['fab', 'facebook']} />
-
-
-		//head
-		// const titles = (props.contacts ? props.data[0].contact : props.data[0].donors.list[0])
-		// return (
-		// 	<thead>
-		// 		<tr>
-		// 			{
-		// 			Object.keys(titles).map(title => {
-		// 				return <th key={title}>{title}</th>	
-		// 			})
-		// 			}
-		// 		</tr>
-		// 	</thead>
-		// )
-
-
-		//body
-		// if (props.contacts) {
-		// 	return (
-		// 		<tbody>
-		// 		{
-		// 		props.data.map(member => {
-		// 			if (member.selected) {
-		// 				return (
-		// 					<tr key={member.name}>
-		// 						<td>{member.name}</td>
-		// 						<td>
-		// 							<a href={'http://'+member.contact.Website} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon="globe"/>
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							<a href={'malto:'+member.contact.Email} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon="envelope"/>
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							{member.contact.Phone}
-		// 						</td>
-		// 						<td>
-		// 							<a href={'http://'+member.contact.News} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon="newspaper"/>
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							<a href={'http://'+member.contact.Twitter} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon={['fab', 'twitter']} />
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							<a href={'http://'+member.contact.Facebook} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon={['fab', 'facebook']} />
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							{member.contact.Liaison}
-		// 						</td>
-		// 						<td>
-		// 							{member.contact['Liaison Phone']}
-		// 						</td>
-		// 						<td>
-		// 							<a href={'malto:'+member.contact['Liaison Email']} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon="envelope"/>
-		// 							</a>
-		// 						</td>
-		// 						<td>
-		// 							<a href={'malto:'+member.contact['Personal Email']} 
-		// 								target="_blank" 
-		// 								rel="noopener noreferrer">
-		// 								<FontAwesomeIcon icon="envelope"/>
-		// 							</a>
-		// 						</td>
-		// 					</tr>
-		// 				)
-		// 			}
-		// 		})
-		// 		}
-		// 	</tbody>
-		// 	)
-		// }
-		// else {
-		// 	return (
-		// 		<tbody>
-		// 			{
-		// 			props.data.map(member => {
-		// 				return member.donors.list.map(item => {
-		// 					return (
-		// 						<tr key={item.ID}>							
-		// 						{Object.values(item).map((val, i) => <td key={i}>{val}</td>)}
-		// 						</tr>
-		// 					)
-
-		// 				})
-		// 			})
-		// 			}
-
-		// 		</tbody>
-		// 	)
-		// }
+		

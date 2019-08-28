@@ -12,7 +12,8 @@ members.forEach((member) => {
 		voteN: member.Vote_N,
 		voteA: member.Vote_A,
 		district: member.DISTRICT,
-		term: member.TERM_REMAINING,
+		term: member['TERM REMAINING'],
+		termEnd: member.Term_End,
 		conflicts: member.CONFLICTS,
 		contact: {
 			Name: member.CName,
@@ -115,7 +116,7 @@ const donors = {
 
 councilDonors.forEach(donor => {
 	const entity = donor.ENTITY
-	const name = donor.LNAME
+	const name = donor.LAST
 	if (entity === 'COM' || entity === 'SCC') {
 		donors[name]['association'] += 1
 	}
@@ -127,9 +128,7 @@ councilDonors.forEach(donor => {
 	}
 
 	if (donor.AMOUNT !== "") {
-		const amount = parseInt(donor.AMOUNT.replace(/[$,]/g, ''))
-		console.log(name, amount)
-		donors[name]['total'] += amount
+		donors[name]['total'] += donor.AMOUNT
 		donors[name].list.push(donor)
 	}
 
@@ -139,6 +138,7 @@ memberState.forEach(member => {
 	member['donors'] = donors[member.member]
 })
 
+console.log(memberState)
 export const initialState = {
 	memberState,
 }

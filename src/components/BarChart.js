@@ -6,9 +6,11 @@ import { colors } from '../apis/colors'
 import { getMembers } from '../state/memberReducer'
 
 const BarChart = (props) => (
-	<Bar
-		data={props.data}
-	/>
+	<div className="d-flex flex-column justify-content-center h-100" style={{minHeight: '350px'}}>
+		<Bar
+			data={props.data}
+		/>
+	</div>
 )
 
 const mapStateToProps = (state) => {

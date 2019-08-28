@@ -14,23 +14,24 @@ const Controls = (props) => {
 		<Container
 			fluid='true'
 			className="p-3 border position-sticky bg-white"
-			style={{zIndex: 1, top: 0}}
+			style={{zIndex: 100, top: 0}}
 		>
 			<Form>
 				<Row>
-					<Col sm={12}><h4>Council Members</h4></Col>
+					<Col sm={12}><h4>San Jose Council Members</h4></Col>
 				</Row>
 				<Row key={`custom-inline-checkbox`} >
 		
 					<Col sm={12}>
 						{
 						members.map((member, i) => {
+							const label = `${member.CName}, ${member.DISTRICT}`
 							return (
 							    <Form.Check
 							      	defaultChecked={true}
 							        custom
 							        inline
-							        label={member.CName +', ' +member.DISTRICT}
+							        label={label}
 							        key={member.DistrictNum}
 							        type='checkbox'
 							        id={`custom-inline-checkbox-${member.DistrictNum}`}
