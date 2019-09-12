@@ -2,15 +2,24 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { MDBDataTable } from 'mdbreact';
 
-
 import { getMembers } from '../state/memberReducer'
+import { getTypes } from '../state/typeReducer'
 
 
 const TableComponent = (props) => {
-
 	const buildColumns = () => {
 	 	const columns = [];
-	 	const titles = (props.contacts ? props.data[0].contact : props.data[0].donors.list[0])
+	 	let titles;
+
+	 	if (props.contacts) {
+	 		titles = props.members[0].contact
+	 	}
+	 	else if (props.donors) {
+	 		titles = props.members[0].donors.list[0]
+	 	}
+	 	else if (props.permits) {
+	 		titles = props.types[0].list[0]
+	 	}
 
 	 	Object.keys(titles).map(title =>{
 			return columns.push({
@@ -35,7 +44,8 @@ const TableComponent = (props) => {
 					className="blue-text"
 					href={link} 
 					target="_blank" 
-					rel="noopener noreferrer">
+					rel="noopener noreferrer"
+					key={key}>
 					<i key={key} className={icon} aria-hidden="true" /></a>]
 				)
 			}
@@ -48,9 +58,9 @@ const TableComponent = (props) => {
 				Twitter: 'fab fa-twitter',
 				Facebook: 'fab fa-facebook',
 			}
-			props.data.forEach(member => {
+			props.members.forEach(member => {
 
-				if ( member.selected) {
+				if (member.selected) {
 					let row = {}
 					const contact = member.contact
 					Object.keys(contact).forEach(val =>{
@@ -65,22 +75,29 @@ const TableComponent = (props) => {
 
 				rows.push(row)
 				}
-				
-
 			})
-
-
 		}
 		else {
-			props.data.forEach(member => {
-				if (member.selected) {
-					 member.donors.list.forEach(item => {
-						rows.push(item)
-						
-					})
-				}
-
-			})
+			if (props.donors) {
+				props.members.forEach(member => {
+					if (member.selected) {
+						 member.donors.list.forEach(item => {
+							rows.push(item)
+							
+						})
+					}
+				})
+			}
+			else if (props.permits) {
+				props.types.forEach(type => {
+					if (type.selected) {
+						 type.list.forEach(item => {
+							rows.push(item)
+							
+						})
+					}
+				})
+			}
 		}
 		return rows
 	}
@@ -103,7 +120,7 @@ const TableComponent = (props) => {
 }
 
 const mapStateToProps = (state) => {
-	return {data: getMembers(state)}
+	return {members: getMembers(state), types: getTypes(state)}
 }
 
 export default connect(mapStateToProps)(TableComponent)

@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2';
 
+import { getTypes } from '../state/typeReducer'
 import { getMembers } from '../state/memberReducer'
 import { colors } from '../apis/colors'
 
@@ -10,10 +11,17 @@ const DoughnutChart = (props) => {
 	const lables = [];
 	const data = [];
 	const backgroundColor = [];
-
-	props.data.forEach((member, i) => {
+	
+	props.members.forEach((member, i) => {
 		if (member.selected) {
-			const value = (props.conflicts ? member.conflicts : member.donors.total)
+			let value
+			if (props.conflicts) {
+				value = member.conflicts
+			}
+			else if (props.members) {
+				value = member.donors.total
+			}
+
 			lables.push(member.name)
 			data.push(value)
 			backgroundColor.push(colors[i])
@@ -36,12 +44,10 @@ const DoughnutChart = (props) => {
 
 
 	return (
-		<div className="d-flex flex-column justify-content-center h-100" style={{minHeight: '350px'}}>
 			<Doughnut
 				data={dataProp}
 				options={options}
 			/>
-		</div>
 	)
 }
 
@@ -50,8 +56,10 @@ const DoughnutChart = (props) => {
 
 const mapStateToProps = (state) => {
 	
-
-	return {data: getMembers(state)}
+	return {
+		members: getMembers(state),
+		types: getTypes(state)
+	}
 }
 
 export default connect(mapStateToProps)(DoughnutChart)

@@ -3,6 +3,7 @@ import Helmet from "react-helmet"
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
+import { connect } from 'react-redux';
 
 import MemberImages from '../components/MemberImages'
 import Header from '../components/Header'
@@ -10,10 +11,12 @@ import Controls from '../components/Controls'
 import DoughnutChart from '../components/DoughnutChart'
 import DonorBarChart from '../components/BarChart'
 import TableComponent from '../components/TableComponent'
+import HorBarChart from '../components/HorBarChart'
+import PieChart from '../components/PieChart'
 import Map from '../components/Map'
 
 
-const PeoplePage = () => (
+const PeoplePage = (props) => (
 	<React.Fragment>
 	  <Helmet>
 	  	<meta charSet="utf-8" />
@@ -25,9 +28,13 @@ const PeoplePage = () => (
 	      crossorigin="anonymous"
 	    />
 	  </Helmet>
+
 	    <Container fluid={true} className="p-0">
 			<Header />
 			<Controls />
+			{
+			props.checked
+			?
 			<Container fluid={true} className="p-0">
 				<Row className="p-3 m-3">
 					
@@ -41,24 +48,64 @@ const PeoplePage = () => (
 						/>
 					</Col>
 					<Col md={7} className="border">
-						<h4>Vote History (All developments)</h4>
+						<h4>Status Mix</h4>
+						<PieChart />	
+					</Col>
+				</Row>
+				<Row className="p-3 m-3">
+					<Col sm={12} className="border">
+						<h4>Time Per Planning Process <span className="font-small">(days)</span></h4>
+						<HorBarChart />
+					</Col>
+				</Row>
+				<Row className="p-3 m-3">
+					<Col sm={12} className="border">
+						<h4>Permit List</h4>
+						<TableComponent permits/>
+					</Col>
+				</Row>
+			</Container>
+			:
+			<Container fluid={true} className="p-0">
+				<Row className="p-3 m-3">
+					
+					<Col md={5} className="border">
+						<h4>Region <span className="float-right font-small pt-2">USA > CA > SANTA CLARA > SAN JOSE</span></h4>
+						<Map 
+							googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAClnmEcTQ58HoCoE-5XjRgz32HxLJbTlE&v=3.exp&libraries=geometry,drawing,places`}
+							loadingElement={<div style={{ height: `100%` }} />}
+							containerElement={<div style={{ height: `600px`, width: `100%` }} />}
+							mapElement={<div style={{ height: `95%` }} />}
+						/>
+					</Col>
+					<Col md={7} className="border">
+						<h4>Vote History <span className="font-small">(All developments)</span></h4>
 						<MemberImages />
 					</Col>
 				</Row>
 				<Row className="p-3 m-3">
-					<Col md={4} className="border">
-						<h4>Contributions to Politician (CA Forms 460 & 497)</h4>
-						<DoughnutChart />
-					</Col>
-					<Col md={4} className="border">
-						<h4>Council Donors by Type (CA Forms 460 & 497)</h4>
-						<p className="font-small">Data available on city <a target="_blank" rel="noopener noreferrer" href="https://www.southtechhosting.com/SanJoseCity/CampaignDocsWebRetrieval/Search/SearchByFilerName.aspx" >
-							public portal.</a>
+					<Col md={12} className="border">
+						<h4>Council Donors by Type <span className="font-small"><br/>(CA Forms 460 & 497)</span></h4>
+						<p className="font-small">Source: <a target="_blank" rel="noopener noreferrer" href="https://www.southtechhosting.com/SanJoseCity/CampaignDocsWebRetrieval/Search/SearchByFilerName.aspx" >
+							 Campaign Docs.</a>
 						</p>
 						<DonorBarChart />
 					</Col>
-					<Col md={4} className="border">
-						<h4>Conflicts by Politician (CA Form 700)</h4>
+				</Row>
+
+				<Row className="p-3 m-3">
+					<Col md={6} className="border">
+						<h4>Contributions to Politician <span className="font-small"><br/>(CA Forms 460 & 497)</span></h4>
+						<p className="font-small">Source: <a target="_blank" rel="noopener noreferrer" href="https://www.southtechhosting.com/SanJoseCity/CampaignDocsWebRetrieval/Search/SearchByFilerName.aspx" >
+							 Campaign Docs.</a>
+						</p>
+						<DoughnutChart members/>
+					</Col>
+					<Col md={6} className="border">
+						<h4>Conflicts by Politician <span className="font-small"><br/>(CA Form 700)</span></h4>
+						<p className="font-small">Source: <a target="_blank" rel="noopener noreferrer" href="http://www.fppc.ca.gov/transparency/form-700-filed-by-public-officials/form700-search.html" >
+							 Campaign Docs.</a>
+						</p>
 						<DoughnutChart conflicts/>
 					</Col>
 				</Row>
@@ -72,15 +119,18 @@ const PeoplePage = () => (
 				<Row className="p-3 m-3">
 					<Col md={12} className="border">
 						<h4>Donor List</h4>
-						<TableComponent />
+						<TableComponent donors/>
 					</Col>
 				</Row>
 
 			</Container>
+			}
 		</Container>
 	</React.Fragment>
 )
 
-
-export default PeoplePage
+const mapStateToProps = (state) => {
+	return {checked: state.pageReducer}
+}
+export default connect(mapStateToProps, null)(PeoplePage)
 

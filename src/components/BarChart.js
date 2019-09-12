@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
 
-import { colors } from '../apis/colors'
 import { getMembers } from '../state/memberReducer'
 
 const BarChart = (props) => (
-	<div className="d-flex flex-column justify-content-center h-100" style={{minHeight: '350px'}}>
+	<div style={{position: 'relative', height: '30vh'}}>
 		<Bar
 			data={props.data}
+			options={props.options}
+
 		/>
 	</div>
 )
@@ -19,7 +20,6 @@ const mapStateToProps = (state) => {
 	const assoc = [];
 	const business = [];
 	const other = [];
-	const backgroundColor = [];
 
 	getMembers(state).forEach((member, i) => {
 		if (member.selected) {
@@ -27,7 +27,6 @@ const mapStateToProps = (state) => {
 			other.push(member.donors.other)
 			business.push(member.donors.business)
 			lables.push(member.name)
-			backgroundColor.push(colors[i])
 		}
 	})
 
@@ -49,7 +48,13 @@ const mapStateToProps = (state) => {
 	    	backgroundColor: '#165F1E',
 	    }],
 	};
-	return {data: dataProp}
+	const options = {
+    	legend: {
+	        position: 'bottom',
+	    },
+	    maintainAspectRatio: false
+	};
+	return {data: dataProp, options: options}
 }
 
 export default connect(mapStateToProps)(BarChart)

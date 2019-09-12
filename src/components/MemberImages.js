@@ -14,7 +14,7 @@ const MemberImages = (props) => {
 	    bottom: '30%',
 	    width: '100%',
 	    color: '#fff',
-	    backgroundColor: '#dc3545',
+	    backgroundColor: '#007bff',
 	    fontWeight: 'bold'
 	}
 	return (

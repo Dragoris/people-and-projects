@@ -3,9 +3,9 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const teal = {color: '#52BCC5', fontWeight: 700}
+const teal = {color: '#007bff', fontWeight: 700}
 const Header = () => (
-	<Navbar bg="light" variant="light">
+	<Navbar bg="light" variant="light" className="border-bottom">
 	    <Navbar.Brand href="/">
 	    	<img
 	    		src="//d3ju1gh2kf3yfd.cloudfront.net/img/ER_01_Logo.jpg"

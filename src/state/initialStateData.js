@@ -1,5 +1,6 @@
 import { members } from '../apis/council-members'
 import { councilDonors } from '../apis/council-donors'
+import { permitsKeyed } from '../apis/permitsKeyed'
 
 
 const memberState = [];
@@ -138,7 +139,69 @@ memberState.forEach(member => {
 	member['donors'] = donors[member.member]
 })
 
-console.log(memberState)
+
+
+const selectedTypes = []
+const countedPermits = {}
+
+Object.keys(permitsKeyed).forEach(permit => {
+	let duration = 0
+	let min = null
+	let max = null
+	let count = 0
+
+	const list = []
+	let statuses = {}
+
+	permitsKeyed[permit].forEach(data => {
+		const id = data.PERMITID
+		const time = data.DURATION
+		const status = data.Status.trim()
+
+		if (!countedPermits[id]) {
+			if (min === null || min > time) {
+				min = time
+			}
+			if (max === null || max < time) {
+				max = time
+			}
+
+			duration += time
+			count += 1
+
+			if (statuses[status]) {
+				statuses[status]['amount'] += 1
+			}
+			else {
+				statuses[status] = {amount: 1}
+			}
+
+			list.push(data)
+			
+
+
+			countedPermits[id] = true
+
+
+		}
+	})
+
+	const avg = Number((duration / count).toFixed(1))
+	selectedTypes.push({
+		selected: true,
+		name: permit,
+		time: {
+			duration,
+			min,
+			max,
+			avg
+		},
+		list,
+		statuses,
+	})
+})
+
 export const initialState = {
 	memberState,
+	selectedTypes
 }

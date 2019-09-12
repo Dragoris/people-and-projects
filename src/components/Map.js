@@ -21,8 +21,8 @@ const Map = withScriptjs(withGoogleMap((props) => {
 
   return (
       <GoogleMap
-        defaultZoom={10}
-        center={ { lat:  37.274777, lng: -121.901481 } }
+        defaultZoom={11}
+        center={ { lat:  37.3129777, lng: -121.901481 } }
         >
         <Polygon
           paths={paths}
