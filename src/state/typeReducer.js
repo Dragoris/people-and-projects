@@ -1,6 +1,6 @@
 import { initialState } from './initialStateData'
 
-const types = initialState.selectedTypes
+const types = initialState.typeState
 export default (state = types, action) => {
 	switch (action.type) {
 		case 'TOGGLE_TYPE':

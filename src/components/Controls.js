@@ -7,15 +7,13 @@ import { connect } from 'react-redux';
 import Switch from "react-switch";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import { members } from '../apis/council-members'
-import { permitsKeyed } from '../apis/permitsKeyed'
 import { toggleMember } from '../state/actions'
 import { togglePage } from '../state/actions'
 import { toggleType } from '../state/actions'
+import { showLongestTypes } from '../state/actions'
 
 
 const Controls = (props) => {
-	console.log(props)
 	return (
 		<Container
 			fluid='true'
@@ -23,7 +21,7 @@ const Controls = (props) => {
 			style={{zIndex: 100, top: 0, maxHeight: '160px', overflowY: 'scroll'}}
 		>
 			<Form>
-				<label style={{float: 'left'}}>
+				<label className="toggleSwitch">
 					<strong>People </strong>
 		        	<Switch
 		        		onChange={() => props.togglePage()}
@@ -48,15 +46,15 @@ const Controls = (props) => {
 									const name = permit.name
 									return (
 									    <Form.Check
-									      	defaultChecked={true}
+									      	checked={permit.selected}
 									        custom
 									        inline
 									        label={name}
 									        key={name}
 									        type='checkbox'
 									        id={`custom-inline-checkbox-${name}`}
-									        style={{width: '13%', fontSize: '.8em', whiteSpace: 'pre-wrap'}}
-									        onClick={() => props.toggleType(name)}
+									        className="checkboxes"
+									        onChange={() => props.toggleType(name)}
 									    />
 									)
 								})
@@ -84,8 +82,8 @@ const Controls = (props) => {
 									        key={member.district}
 									        type='checkbox'
 									        id={`custom-inline-checkbox-${member.district}`}
-									        style={{width: '13%', fontSize: '.8em', whiteSpace: 'pre-wrap'}}
-									        onClick={() => props.toggleMember(member.member)}
+									        className="checkboxes"
+									        onChange={() => props.toggleMember(member.member)}
 									    />
 									)
 								})
@@ -111,7 +109,8 @@ const mapDispatchToProps = (dispatch, member) => {
 		},
 		toggleType: (type) => {
 			dispatch(toggleType(type))
-		}
+		},
+
 	}
 };
 

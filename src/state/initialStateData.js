@@ -141,7 +141,7 @@ memberState.forEach(member => {
 
 
 
-const selectedTypes = []
+const typeState = []
 const countedPermits = {}
 
 Object.keys(permitsKeyed).forEach(permit => {
@@ -187,7 +187,7 @@ Object.keys(permitsKeyed).forEach(permit => {
 	})
 
 	const avg = Number((duration / count).toFixed(1))
-	selectedTypes.push({
+	typeState.push({
 		selected: true,
 		name: permit,
 		time: {
@@ -199,9 +199,30 @@ Object.keys(permitsKeyed).forEach(permit => {
 		list,
 		statuses,
 	})
+
+	const longest = typeState.map(type => {
+		return [type.name, type.time.avg]
+	})
+	.sort(function(a, b) {
+		return b[1] - a[1]
+	})
+	.slice(0,15)
+	.map(type => {
+		return type[0]
+	})
+
+	typeState.map(type => {
+		if (longest.includes(type.name)) {
+			type.selected = true
+		}
+		else{
+			type.selected = false
+		}
+	})
 })
+console.log(typeState)
 
 export const initialState = {
 	memberState,
-	selectedTypes
+	typeState
 }

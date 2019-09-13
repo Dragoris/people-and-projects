@@ -1,0 +1,18 @@
+.checkboxes{
+	width: 13%;
+	font-size: .8em,;
+	white-space: pre-wrap;
+	margin: 2px 5px;
+}
+.toggleSwitch{
+	float: left;
+}
+
+@media(max-width: 775px) {
+	.checkboxes{
+		width: 25%;
+	}
+	.toggleSwitch{
+		float: none;
+	}
+}

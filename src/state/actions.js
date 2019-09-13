@@ -9,3 +9,4 @@ export const togglePage = () => {
 export const toggleType = (type) => {
 	return {type: 'TOGGLE_TYPE', payload: type}
 }
+

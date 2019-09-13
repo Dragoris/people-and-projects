@@ -13,7 +13,7 @@ const Header = () => (
 	    		alt="Coda Compliance Logo"/>
 	    	CODA entitle®
 	    </Navbar.Brand>
-	    <Nav className="ml-auto">
+	    <Nav className="ml-auto d-none d-sm-flex">
 	    	<Nav.Link href="#" style={teal}>My Reports</Nav.Link>
 	    	<Nav.Link href="#" style={teal}>My Projects</Nav.Link>
 	    	<Nav.Link href="#">Hi, Rick</Nav.Link>

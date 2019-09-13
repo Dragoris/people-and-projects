@@ -39,7 +39,14 @@ const PeoplePage = (props) => (
 				<Row className="p-3 m-3">
 					
 					<Col md={5} className="border">
-						<h4>Region <span className="float-right font-small pt-2">USA > CA > SANTA CLARA > SAN JOSE</span></h4>
+						<Row>
+							<Col xs={4}>
+								<h4>Region</h4>
+							</Col>
+							<Col xs={8}>
+								<div className="float-right font-small pt-2">USA > CA > SANTA CLARA > SAN JOSE</div>
+							</Col>
+						</Row>
 						<Map 
 							googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAClnmEcTQ58HoCoE-5XjRgz32HxLJbTlE&v=3.exp&libraries=geometry,drawing,places`}
 							loadingElement={<div style={{ height: `100%` }} />}
@@ -70,7 +77,14 @@ const PeoplePage = (props) => (
 				<Row className="p-3 m-3">
 					
 					<Col md={5} className="border">
-						<h4>Region <span className="float-right font-small pt-2">USA > CA > SANTA CLARA > SAN JOSE</span></h4>
+						<Row>
+							<Col xs={4}>
+								<h4>Region</h4>
+							</Col>
+							<Col xs={8}>
+								<div className="float-right font-small pt-2">USA > CA > SANTA CLARA > SAN JOSE</div>
+							</Col>
+						</Row>
 						<Map 
 							googleMapURL={`https://maps.googleapis.com/maps/api/js?key=AIzaSyAClnmEcTQ58HoCoE-5XjRgz32HxLJbTlE&v=3.exp&libraries=geometry,drawing,places`}
 							loadingElement={<div style={{ height: `100%` }} />}
