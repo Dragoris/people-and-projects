@@ -220,7 +220,6 @@ Object.keys(permitsKeyed).forEach(permit => {
 		}
 	})
 })
-console.log(typeState)
 
 export const initialState = {
 	memberState,

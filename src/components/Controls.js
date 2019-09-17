@@ -21,7 +21,7 @@ const Controls = (props) => {
 			style={{zIndex: 100, top: 0, maxHeight: '160px', overflowY: 'scroll'}}
 		>
 			<Form>
-				<label className="toggleSwitch">
+				<label>
 					<strong>People </strong>
 		        	<Switch
 		        		onChange={() => props.togglePage()}

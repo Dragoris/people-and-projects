@@ -28,15 +28,18 @@ const title = {
 
 const Landing = () => (
 	<div style={containerStyle}>
-		<div>
+		<div className="px-4">
 			<h1 style={title}> Find Your Entitlement Risk</h1>
 			<UseButtons />
 			<Form className="pt-2">
-			  <Form.Group as={Row} controlId="search">
-			  	<Col sm={10}>
-			    	<Form.Control  placeholder="Enter City Here" />
+			  <Form.Group controlId="search" className="d-flex align-items-center">
+			  	<Col sm={9}>
+			    	<Form.Control as="select" placeholder="Enter City Here">
+			    		<option>Select a City</option>
+			    		<option>San Jose, CA</option>
+			    	</Form.Control>
 			    </Col>
-			    <Col sm={2}>
+			    <Col sm={3}>
 			    	<Button className="w-100">
 			    		<Link style={{color: '#fff', textDecoration: 'none'}} to="/people">Search</Link>
 			    	</Button>

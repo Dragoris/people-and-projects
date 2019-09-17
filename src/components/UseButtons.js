@@ -63,7 +63,7 @@ data.forEach(use => {
 })
 const UseButtons = () => {
 	return(
-		<ButtonGroup>
+		<ButtonGroup className="flex-wrap">
 			{buttons}
 		</ButtonGroup>
 	)
