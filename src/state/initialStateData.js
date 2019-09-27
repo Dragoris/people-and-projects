@@ -9,6 +9,7 @@ members.forEach((member) => {
 		member: member.LName,
 		selected: true,
 		name: member.CName,
+		committees: member.COMMITTEES,
 		voteY: member.Vote_Y,
 		voteN: member.Vote_N,
 		voteA: member.Vote_A,
@@ -206,7 +207,7 @@ Object.keys(permitsKeyed).forEach(permit => {
 	.sort(function(a, b) {
 		return b[1] - a[1]
 	})
-	.slice(0,15)
+	.slice(0,10)
 	.map(type => {
 		return type[0]
 	})

@@ -5,6 +5,10 @@
 	margin: 2px 5px;
 }
 
+.tooltip .tooltip-inner {
+  max-width: 600px;
+  white-space: normal;
+}
 @media(max-width: 775px) {
 	.checkboxes{
 		width: 25%;
