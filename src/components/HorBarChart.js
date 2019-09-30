@@ -61,7 +61,6 @@ const mapStateToProps = state => {
 		  maintainAspectRatio: false
 		}
 	}
-
 	return { chart: dataProp, options: options}
 }
 

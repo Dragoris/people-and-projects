@@ -9,7 +9,8 @@ import MemberImages from '../components/MemberImages'
 import Header from '../components/Header'
 import Controls from '../components/Controls'
 import DoughnutChart from '../components/DoughnutChart'
-import DonorBarChart from '../components/BarChart'
+import BarChart from '../components/BarChart'
+import YearsBarChart from '../components/YearsBarChart'
 import TableComponent from '../components/TableComponent'
 import HorBarChart from '../components/HorBarChart'
 import PieChart from '../components/PieChart'
@@ -35,7 +36,7 @@ const PeoplePage = (props) => (
 			{
 			props.checked
 			?
-			<Container fluid={true} className="p-0">
+			<Container>
 				<Row className="p-3 m-3">
 					
 					<Col md={5} className="border">
@@ -71,9 +72,15 @@ const PeoplePage = (props) => (
 						<TableComponent permits/>
 					</Col>
 				</Row>
+				<Row className="p-3 m-3">
+					<Col sm={12} className="border">
+						<h4>Projects Approved per Year</h4>
+						<YearsBarChart />
+					</Col>
+				</Row>
 			</Container>
 			:
-			<Container fluid={true} className="p-0">
+			<Container>
 				<Row className="p-3 m-3">
 					
 					<Col md={5} className="border">
@@ -103,7 +110,7 @@ const PeoplePage = (props) => (
 						<p className="font-small">Source: <a target="_blank" rel="noopener noreferrer" href="https://www.southtechhosting.com/SanJoseCity/CampaignDocsWebRetrieval/Search/SearchByFilerName.aspx" >
 							 Campaign Docs.</a>
 						</p>
-						<DonorBarChart />
+						<BarChart />
 					</Col>
 				</Row>
 

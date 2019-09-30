@@ -18,7 +18,7 @@ const Controls = (props) => {
 		<Container
 			fluid='true'
 			className="p-3 border-bottom border-dark position-sticky bg-white"
-			style={{zIndex: 100, top: 0, maxHeight: '160px', overflowY: 'scroll'}}
+			style={{zIndex: 100, top: 0, maxHeight: '200px', overflowY: 'scroll'}}
 		>
 			<Form>
 				<label>

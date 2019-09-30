@@ -153,11 +153,14 @@ Object.keys(permitsKeyed).forEach(permit => {
 
 	const list = []
 	let statuses = {}
+	let years = {}
 
 	permitsKeyed[permit].forEach(data => {
 		const id = data.PERMITID
 		const time = data.DURATION
 		const status = data.Status.trim()
+		const year = data.Year
+
 
 		if (!countedPermits[id]) {
 			if (min === null || min > time) {
@@ -175,6 +178,13 @@ Object.keys(permitsKeyed).forEach(permit => {
 			}
 			else {
 				statuses[status] = {amount: 1}
+			}
+
+			if (years[year]) {
+				years[year] += 1
+			}
+			else if (year != null) {
+				years[year] = 1
 			}
 
 			list.push(data)
@@ -199,6 +209,7 @@ Object.keys(permitsKeyed).forEach(permit => {
 		},
 		list,
 		statuses,
+		years
 	})
 
 	const longest = typeState.map(type => {

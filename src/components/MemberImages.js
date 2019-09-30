@@ -8,7 +8,6 @@ import { getMembers } from '../state/memberReducer'
 
 
 const MemberImages = (props) => {
-	console.log(props)
 	const banner = {
 		fontSize: '.8em',
 	    textAlign: 'center',
